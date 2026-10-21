@@ -5,5 +5,8 @@
   "description": "Official website of MJP Creations",
   "engines": {
     "node": ">=18"
+  },
+  "scripts": {
+    "test": "node scripts/check-site.cjs"
   }
 }
