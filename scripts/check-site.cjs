@@ -20,14 +20,14 @@ for (const [file, html] of htmlByPath) {
   assert.equal(new Set(ids).size, ids.length, "Duplicate ids in " + file);
   idsByPath.set(file,new Set(ids));
   assert(html.includes('name="viewport"'), "Missing viewport in " + file);
-  assert(html.includes('href="/styles.css"'), "Missing stylesheet in " + file);
+  assert(html.includes('href="styles.css"'), "Missing stylesheet in " + file);
 }
 
 for (const [file, html] of htmlByPath) {
   const urls = [...html.matchAll(/\bhref="([^"]+)"/g)].map(match => match[1]);
   for (const url of urls) {
     if (/^(https?:|mailto:|tel:|\/\/)/.test(url)) continue;
-    if (!url.startsWith("/") && !url.startsWith("#")) continue;
+    if (!url.startsWith("/") && !url.startsWith("#") && !/^[^?#]+\.(html|css|svg)(#.*)?$/.test(url)) continue;
     const [filePart, fragment] = url.split("#");
     const target = !filePart || filePart === "/"
       ? (filePart === "/" ? "index.html" : file)
