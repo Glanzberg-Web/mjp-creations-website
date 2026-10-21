@@ -1,0 +1,9 @@
+{
+  "name": "mjp-creations-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Official website of MJP Creations",
+  "engines": {
+    "node": ">=18"
+  }
+}
