@@ -57,8 +57,8 @@
 
   const form = document.getElementById("contact-form");
   const status = document.getElementById("form-status");
-  const submit = form.querySelector('button[type="submit"]');
-  form.addEventListener("submit", async event => {
+  const submit = form?.querySelector('button[type="submit"]');
+  if (form && status && submit) form.addEventListener("submit", async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     const data = Object.fromEntries(new FormData(form).entries());
